@@ -12,6 +12,7 @@ def new_link():
     data = request.get_json()
     link = Link(data["longURL"])
     link.insert()
+    print("link.id: ", link.id)
     short = BASE58.encode_int(link.id)
     data = {
         'short': short,
@@ -28,6 +29,7 @@ def redirect_link(short):
     id = 0
     try:
         id = BASE58.decode_int(short)
+        print(id)
     except KeyError:
         abort(404)
     link = Link.from_redis(id)

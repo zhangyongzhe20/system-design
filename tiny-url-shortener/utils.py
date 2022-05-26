@@ -12,6 +12,7 @@ class Base:
 
     def encode_int(self, i: int) -> str:
         out = ''
+        print("self.size: ", self.size)
         while i:
             i, idx = divmod(i, self.size)
             out = self.alphabet[idx] + out
